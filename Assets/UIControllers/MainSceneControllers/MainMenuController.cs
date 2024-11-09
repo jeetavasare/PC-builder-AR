@@ -20,43 +20,45 @@ public class MainMenuController : MonoBehaviour
     {
         
         startButton.onClick.AddListener(OnStartButtonClick);
-
         
-        StoreDropdownItems();
+        PlayerPrefs.SetString("SelectedComponent", "RAM");
+        //StoreDropdownItems();
     }
 
     
     public void OnStartButtonClick()
     {
         DataHolder.selectedDropdownText = selectedOption;
-        Debug.Log("df"+selectedOption);
-        SceneManager.LoadScene("SampleScene");
+        UnityEngine.Debug.Log("dfsfgsf"+selectedOption);
+        //PlayerPrefs.SetString("SelectedComponent", "RAM");
+
+        SceneManager.LoadScene("ComponentSpecDetector");
         
         
     }
 
     
-    public void StoreDropdownItems()
-    {
-        dropdownItems.Clear();  
+    //public void StoreDropdownItems()
+    //{
+    //    dropdownItems.Clear();  
 
-        foreach (TMP_Dropdown.OptionData option in dropdown.options)
-        {
-            dropdownItems.Add(option.text.ToString());  
-        }
+    //    foreach (TMP_Dropdown.OptionData option in dropdown.options)
+    //    {
+    //        dropdownItems.Add(option.text.ToString());  
+    //    }
 
         
-        foreach (string item in dropdownItems)
-        {
-            Debug.Log(item);  
-        }
-    }
-    void DropdownValueChanged(Dropdown change)
+    //    foreach (string item in dropdownItems)
+    //    {
+    //        Debug.Log(item);  
+    //    }
+    //}
+    public void DropdownValueChanged(TMP_Dropdown change)
     {
         
         selectedOption = change.options[change.value].text;
 
-        
+        PlayerPrefs.SetString("SelectedComponent", selectedOption);
         Debug.Log("New Selected Option: " + selectedOption);
     }
     
