@@ -21,7 +21,8 @@ public class MainMenuController : MonoBehaviour
         
         startButton.onClick.AddListener(OnStartButtonClick);
         
-        PlayerPrefs.SetString("SelectedComponent", "RAM");
+        //PlayerPrefs.SetString("SelectedComponent", "RAM");
+        DataHolder.Mode = "Ram";
         //StoreDropdownItems();
     }
 
@@ -29,6 +30,7 @@ public class MainMenuController : MonoBehaviour
     public void OnStartButtonClick()
     {
         DataHolder.selectedDropdownText = selectedOption;
+        //DataHolder.Mode = selectedOption;
         UnityEngine.Debug.Log("dfsfgsf"+selectedOption);
         //PlayerPrefs.SetString("SelectedComponent", "RAM");
 
@@ -57,8 +59,8 @@ public class MainMenuController : MonoBehaviour
     {
         
         selectedOption = change.options[change.value].text;
-
-        PlayerPrefs.SetString("SelectedComponent", selectedOption);
+        DataHolder.Mode = selectedOption;
+        //PlayerPrefs.SetString("SelectedComponent", selectedOption);
         Debug.Log("New Selected Option: " + selectedOption);
     }
     

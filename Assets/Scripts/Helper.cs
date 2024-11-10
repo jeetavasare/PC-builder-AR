@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Helper : MonoBehaviour
 {
+    public static string Mode;
     private static Helper _instance;
 
     // Singleton pattern to ensure only one instance of Helper
@@ -32,5 +33,10 @@ public class Helper : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void ReturnToHome()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }

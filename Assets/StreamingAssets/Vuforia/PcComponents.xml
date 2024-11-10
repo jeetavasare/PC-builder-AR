@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="cable" size="0.050000 0.061851" />
+    <ImageTarget name="lowshadowbw" size="0.150000 0.050338" />
     <ImageTarget name="mockram" size="0.070000 0.022834" />
     <ImageTarget name="mainmem" size="0.060000 0.116927" />
     <ImageTarget name="ram" size="0.800000 0.605042" />
