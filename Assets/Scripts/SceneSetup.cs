@@ -14,15 +14,23 @@ public class SceneSetup : MonoBehaviour
     void Start()
     {
         Debug.Log("new SCENE");
-        string mode = PlayerPrefs.GetString("SelectedComponent");
+        string mode = DataHolder.Mode;
         Debug.Log(mode);
         modeName.SetText(mode);
 
-        if(mode == "Ram")
+        if(mode == "Ram" )
         {
+            BottomUIController.Instance.SetWarning();
+            BottomUIController.Instance.SetDescription("DDR3 RAM - HP Motherboard");
             Ram.SetActive(true);
             RamSlot.SetActive(true);
             AllGood = true;
+        }
+        else
+        {
+            BottomUIController.Instance.SetWarning();
+            BottomUIController.Instance.SetDescription("Unknown Mode");
+
         }
     }
 
