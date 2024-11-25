@@ -19,7 +19,8 @@ public class ComponenentSpecController : MonoBehaviour
 
     // Start is called before the first frame update
     public GameObject Ram;
-    public ImageTargetBehaviour OfRam; // First Image Target Behaviour
+    public ImageTargetBehaviour RamDDR3; 
+    public ImageTargetBehaviour RamDDR4;
     public UnityEngine.UI.Image backdrop;
     public TextMeshProUGUI textbox;
     bool motherboardPassed = false;
@@ -49,6 +50,7 @@ public class ComponenentSpecController : MonoBehaviour
         if (OfMotherBoard.TargetStatus.Status == Status.TRACKED)
         {
             //BottomUIController.Instance.SetTitle("Waiting for RAM...");
+            DataHolder.MotherBoardSlot = "DDR3";
             BottomUIController.Instance.SetDescription("Laptop MotherBoard -> ");
             BottomUIController.Instance.SetSuccess();
             CheckComponentType();
@@ -61,20 +63,49 @@ public class ComponenentSpecController : MonoBehaviour
     {
         if (componentPassed) {
             return;
+            
         }
         BottomUIController.Instance.SetLog();
         if (DataHolder.Mode == "Ram")
         {
             //Ram.SetActive(true);
-            BottomUIController.Instance.SetTitle("Waiting for RAM");
-            if (OfRam.TargetStatus.Status == Status.TRACKED)
+            BottomUIController.Instance.SetTitle("Waiting for RAM ...");
+            if (RamDDR3.TargetStatus.Status == Status.TRACKED)
             {
-                componentPassed=true;
-                BottomUIController.Instance.SetTitle("Switching to next mode in 3 seconds");
-                BottomUIController.Instance.SetDescription("Laptop MotherBoard -> SODIMM Laptop RAM");
-                BottomUIController.Instance.SetSuccess();
+                if(DataHolder.MotherBoardSlot == "DDR3")
+                {
+                    componentPassed = true;
+                    DataHolder.RamType = "DDR3";
+                    BottomUIController.Instance.SetTitle("Switching to next mode in 3 seconds");
+                    BottomUIController.Instance.SetDescription("HP MotherBoard -> SODIMM DDR3 RAM");
+                    BottomUIController.Instance.SetSuccess();
 
-                Helper.DelayedSceneSwitch(3, "ARVuScene");
+                    Helper.DelayedSceneSwitch(3, "ARVuScene");
+                }
+                else
+                {
+                    BottomUIController.Instance.SetTitle("Incompatible RAM!!");
+                    BottomUIController.Instance.SetFailure();
+                }
+                
+            }
+            else if(RamDDR4.TargetStatus.Status == Status.TRACKED)
+            {
+                if (DataHolder.MotherBoardSlot == "DDR4")
+                {
+                    componentPassed = true;
+                    DataHolder.RamType = "DDR4";
+                    BottomUIController.Instance.SetTitle("Switching to next mode in 3 seconds");
+                    BottomUIController.Instance.SetDescription("HP MotherBoard -> SODIMM DDR4 RAM");
+                    BottomUIController.Instance.SetSuccess();
+
+                    Helper.DelayedSceneSwitch(3, "ARVuScene");
+                }
+                else
+                {
+                    BottomUIController.Instance.SetTitle("Incompatible RAM!!");
+                    BottomUIController.Instance.SetFailure();
+                }
             }
         }
         else if (DataHolder.Mode == "CPU")

@@ -21,7 +21,7 @@ public class SceneSetup : MonoBehaviour
         if(mode == "Ram" )
         {
             BottomUIController.Instance.SetWarning();
-            BottomUIController.Instance.SetDescription("Samsung Ram - MSI Motherboard");
+            BottomUIController.Instance.SetDescription("DDR3 RAM - HP Motherboard");
             Ram.SetActive(true);
             RamSlot.SetActive(true);
             AllGood = true;

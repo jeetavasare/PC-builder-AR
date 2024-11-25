@@ -16,19 +16,19 @@ public class Helper : MonoBehaviour
             {
                 GameObject helperObject = new GameObject("Helper");
                 _instance = helperObject.AddComponent<Helper>();
-                DontDestroyOnLoad(helperObject); // Keep the instance persistent between scenes
+                DontDestroyOnLoad(helperObject);
             }
             return _instance;
         }
     }
 
-    // Public method to initiate the delayed scene switch
+    
     public static void DelayedSceneSwitch(float delay, string sceneName)
     {
         Instance.StartCoroutine(Instance.SwitchSceneAfterDelay(delay, sceneName));
     }
 
-    // Coroutine to handle delayed scene switching
+    
     private IEnumerator SwitchSceneAfterDelay(float delay, string sceneName)
     {
         yield return new WaitForSeconds(delay);

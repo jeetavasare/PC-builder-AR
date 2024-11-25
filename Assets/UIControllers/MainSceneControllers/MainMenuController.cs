@@ -33,10 +33,31 @@ public class MainMenuController : MonoBehaviour
         //DataHolder.Mode = selectedOption;
         UnityEngine.Debug.Log("dfsfgsf"+selectedOption);
         //PlayerPrefs.SetString("SelectedComponent", "RAM");
+        if(DataHolder.Mode == "Visualize Motherboard")
+        {
+            SceneManager.LoadScene("MotherBoardVisualizer");
+        }
+        else
+        {
+            SceneManager.LoadScene("ComponentSpecDetector");
+        }
+        
+        
+    }
 
+
+    public void OnVisualizeClick()
+    {
+        DataHolder.Mode = "Visualize Motherboard";
+        SceneManager.LoadScene("MotherBoardVisualizer");
+    }public void OnRamClick()
+    {
+        DataHolder.Mode = "Ram";
         SceneManager.LoadScene("ComponentSpecDetector");
-        
-        
+    }public void OnCPUClick()
+    {
+        DataHolder.Mode = "CPU";
+        SceneManager.LoadScene("ComponentSpecDetector");
     }
 
     
@@ -63,7 +84,18 @@ public class MainMenuController : MonoBehaviour
         //PlayerPrefs.SetString("SelectedComponent", selectedOption);
         Debug.Log("New Selected Option: " + selectedOption);
     }
-    
+
+    public void ExitGame()
+    {
+        
+        Application.Quit();
+
+        
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
     void Update()
     {
         

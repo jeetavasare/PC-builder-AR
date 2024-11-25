@@ -18,26 +18,21 @@ public class BottomUIController : MonoBehaviour
 
     private void Awake()
     {
-        // If an instance already exists and it's not this one, destroy this duplicate
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        // Set this as the singleton instance
         Instance = this;
 
-        // Optional: Make this GameObject persistent between scenes
-        // Uncomment the line below if you want UIController to persist
-        // DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         //TextMeshProUGUI[] textElements = canvas.GetComponentsInChildren<TextMeshProUGUI>();
 
-        //// Loop through each element and store based on name
+        
         //foreach (TextMeshProUGUI textElement in textElements)
         //{
         //    if (textElement.name == "Title")
@@ -54,20 +49,20 @@ public class BottomUIController : MonoBehaviour
     public void SetSuccess()
     {
         Color textColor;
-        textColor = new Color(0, 0.7f, 0); // Green with 50% opacity
+        textColor = new Color(0, 0.7f, 0); 
         backdrop.color = textColor;
     }
     public void SetFailure()
     {
         Color textColor;
-        textColor = new Color(0.7f, 0, 0); // Green with 50% opacity
+        textColor = new Color(0.7f, 0, 0); 
         backdrop.color = textColor;
     }
 
     public void SetLog()
     {
         Color textColor;
-        textColor = new Color(0, 0, 0,0.7f); // Green with 50% opacity
+        textColor = new Color(0, 0, 0,0.7f);
         backdrop.color = textColor;
     }
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="ddr3slotarea" size="0.140000 0.096387" />
+    <ImageTarget name="ddr3ramfront" size="0.070000 0.032654" />
+    <ImageTarget name="ddr3-ramback" size="0.070000 0.031688" />
+    <ImageTarget name="ddr3ramslot" size="0.070000 0.032528" />
+    <ImageTarget name="hpmotherboard" size="0.350000 0.224373" />
     <ImageTarget name="cable" size="0.050000 0.061851" />
     <ImageTarget name="lowshadowbw" size="0.150000 0.050338" />
     <ImageTarget name="mockram" size="0.070000 0.022834" />
